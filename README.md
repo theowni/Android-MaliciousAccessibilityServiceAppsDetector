@@ -11,12 +11,12 @@ The project aims to provide a way to detect when an Android device might be cont
 Modern banker apps abuse [AccessibilityService](https://developer.android.com/reference/android/accessibilityservice/AccessibilityService) that was created to assist users with disabilities in using Android devices and apps. They run in the background and receive callbacks by the system when AccessibilityEvents are fired. Such events denote some state transition in the user interface, for example, the focus has changed, a button has been clicked, etc. 
 
 RemoteDetector Java class allows to:
-* list suspicious applications (configurable by a list of packages)
+* list suspicious applications _(configurable by a list of packages)_
 * list installed applications with suspicious AccessibilityService capabilities
 * list applications with enabled AccessibilityService which uses suspicious capabilities
-* list applications that uses suspicious ports (PoC currently works for Android < 10)
+* list applications that uses suspicious ports _(PoC currently works for Android < 10)_
 * list suspicious applications installed in last 15minutes 
-* list suspicious applications that installTime is similar to AccessibilityService package installTime (if different packages)
+* list suspicious applications that installTime is similar to AccessibilityService package installTime _(if different packages)_
 
 # Documentation
 
