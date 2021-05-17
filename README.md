@@ -1,7 +1,7 @@
 # Purpose
 
 **Main purposes of the RemoteDetector class is to:**
-* identify keylogging and events hijacking malicious applications
+* identify keyloggers and events hijacking malicious applications
 * identify a "fake bank consultant scenario" when victim is requested to install remote control application and then log in to bank account
 
 
@@ -14,6 +14,7 @@ RemoteDetector Java class allows to:
 * list suspicious applications (configurable by a list of packages)
 * list installed applications with suspicious AccessibilityService capabilities
 * list applications with enabled AccessibilityService which uses suspicious capabilities
+* list applications that uses suspicious ports (PoC currently works for Android < 10)
 * list suspicious applications installed in last 15minutes 
 * list suspicious applications that installTime is similar to AccessibilityService package installTime (if different packages)
 
