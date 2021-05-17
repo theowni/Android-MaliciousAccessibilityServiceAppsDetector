@@ -226,9 +226,9 @@ public class RemoteDetector {
     public List<String> getAccessibilityServiceIDsInstalled() {
         List<AccessibilityServiceInfo> services = getAccessibilityServicesInstalled();
         List<String> serviceIDs = new ArrayList<>();
-        for (AccessibilityServiceInfo svc : services) {
+        for (AccessibilityServiceInfo svc : services)
             serviceIDs.add(svc.getId().split("/")[0]);
-        }
+        
         return serviceIDs;
     }
 

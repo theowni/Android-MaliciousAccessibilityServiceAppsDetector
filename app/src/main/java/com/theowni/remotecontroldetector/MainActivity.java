@@ -2,6 +2,7 @@ package com.theowni.remotecontroldetector;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Switch;
 
 import com.theowni.remotecontroldetector.utils.RemoteDetector;
 
@@ -44,33 +45,37 @@ public class MainActivity extends BaseSecureActivity {
         if (Sets.intersection(
                 appsWithSuspiciousASvcsEnabled,
                 appsWithSuspiciousPortsInUse)
-                .size() > 0)
-            Log.d(logTag, "Device may be controlled or viewed by malicious apps - very high possibility");
+                .size() > 0) {
+            Log.d(logTag, "Suspicious AccessibilityService enabled and network ports in use");
+            ((Switch) findViewById(R.id.switch2)).setChecked(true);
+        }
 
         if (Sets.intersection(
                 Sets.intersection(appsWithSuspiciousASvcsEnabled, appsInstalledInLastQuarter),
-                appsWithCorrelatedInstallTimesWithSuspiciousApps).size() > 0)
-            Log.d(logTag, "Device may be controlled or viewed by malicious apps - high possibility");
+                appsWithCorrelatedInstallTimesWithSuspiciousApps).size() > 0) {
+            Log.d(logTag, "Recently installed and enabled suspicious AccessibilityService");
+            ((Switch) findViewById(R.id.switch3)).setChecked(true);
+        }
 
-        if (Sets.intersection(
-                appsWithSuspiciousASvcsEnabled,
-                appsWithSuspiciousASvcsSettings)
-                .size() > 0)
-            Log.d(logTag, "Device may be controlled or viewed by malicious apps - medium possibility");
-
-        if (appsWithSuspiciousASvcsEnabled.size() > 0)
-            Log.d(logTag, "Device may be controlled or viewed by malicious apps - medium possibility");
+        if (appsWithSuspiciousASvcsEnabled.size() > 0) {
+            Log.d(logTag, "Suspicious AccessibilityService enabled");
+            ((Switch) findViewById(R.id.switch4)).setChecked(true);
+        }
 
         if (Sets.intersection(
                 remoteDetector.getAccessibilityServiceIDsEnabled(),
                 appsWithSuspiciousASvcsSettings)
-                .size() > 0)
-            Log.d(logTag, "Device may be controlled or viewed by malicious apps - medium possibility");
+                .size() > 0) {
+            Log.d(logTag, "AccessibilityService with suspicious capabilities enabled");
+            ((Switch) findViewById(R.id.switch5)).setChecked(true);
+        }
 
         if (Sets.intersection(
                 appsWithSuspiciousASvcsInstalled,
                 appsWithSuspiciousASvcsSettings)
-                .size() != 0)
-            Log.d(logTag, "Device may be controlled or viewed by malicious apps - low/medium possibility");
+                .size() != 0) {
+            Log.d(logTag, "AccessibilityService with suspicious capabilities installed");
+            ((Switch) findViewById(R.id.switch6)).setChecked(true);
+        }
     }
 }
