@@ -1,6 +1,6 @@
-# Purpose
+# Motivation
 
-**Main purposes of the RemoteDetector class is to:**
+**Project aims to:**
 * identify keyloggers and events hijacking malicious applications
 * identify a "fake bank consultant scenario" when victim is requested to install remote control application and then log in to bank account
 
@@ -18,10 +18,28 @@ RemoteDetector Java class allows to:
 * list suspicious applications installed in last 15minutes 
 * list suspicious applications that installTime is similar to AccessibilityService package installTime _(if different packages)_
 
-# Documentation
+# Usage
 
+Example usage can be found in MainActivity class.
+Specifically, the following code performs checks if a suspicious application was installed in last 15minutes and is currently enabled as AccessibilityService:
+
+```java
+Set<String> appsWithSuspiciousASvcsEnabled = remoteDetector.getSuspiciousAccessibilityServicesEnabled();
+Set<String> appsInstalledInLastQuarter = remoteDetector.getAvailabilityServicesInstalledInLastQuarter();
+Set<String> appsWithCorrelatedInstallTimesWithSuspiciousApps = remoteDetector.getAppsWithCorrelatedInstallTimesWithSuspiciousApps();
+
+if (Sets.intersection(
+                Sets.intersection(appsWithSuspiciousASvcsEnabled, appsInstalledInLastQuarter),
+                appsWithCorrelatedInstallTimesWithSuspiciousApps).size() > 0) {
+            Log.d(logTag, "Recently installed and enabled suspicious AccessibilityService!");
+        }
+```
+
+# Details
 TBD
 
-# Credits
+# Documentation
+Code contains document comments, especially in RemoteDetector class. 
 
+# Credits
 TBD
