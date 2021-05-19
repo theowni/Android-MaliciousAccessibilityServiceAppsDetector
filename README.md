@@ -22,6 +22,16 @@ RemoteDetector Java class allows to:
 * list suspicious applications installed in last 15minutes 
 * list suspicious applications that installTime is similar to AccessibilityService package installTime _(if different packages)_
 
+# Demos
+
+## Anubis Detection
+
+https://user-images.githubusercontent.com/10147168/118893109-35e1dd80-b902-11eb-87e9-4c7695a99836.mp4
+
+## Remote Control App Detection
+
+https://user-images.githubusercontent.com/10147168/118893245-67f33f80-b902-11eb-8174-4a53a61329f8.mp4
+
 # Usage
 
 Example usage can be found in MainActivity class.
@@ -39,6 +49,24 @@ if (Sets.intersection(
         }
 ```
 
+
+Another example that may aid with detection malicious application that can draw over other apps:
+
+```java
+Set<String> accessibilityServicesPermittedToOverlay = remoteDetector.getAccessibilityServicesPermittedToOverlay();
+Set<String> appsWithSuspiciousASvcsSettings = remoteDetector.getAccessibilityServicesWithSuspiciousSettingsInstalled();
+
+if (Sets.intersection(
+                Sets.intersection(remoteDetector.getAccessibilityServiceIDsEnabled(), appsWithSuspiciousASvcsSettings),
+                accessibilityServicesPermittedToOverlay)
+                .size() > 0) {
+            Log.d(logTag, "Suspicious AccessibilityService enabled and can draw over apps");
+            ((Switch) findViewById(R.id.switch31)).setChecked(true);
+        }
+```
+
+List of detectable remote control application can be configured via `/res/raw/appconfigs.json` file 
+
 More methods can be found in "RemoteDetector" class.
 
 # Details
@@ -55,6 +83,8 @@ if ((svc.getCapabilities() & CAPABILITY_CAN_PERFORM_GESTURES) != 0)
 ```
 
 Specific pieces of information about suspicious applications are obtained from PackageManager class.
+
+To draw over application the [SYSTEM_ALERT_WINDOW](https://developer.android.com/reference/android/Manifest.permission#SYSTEM_ALERT_WINDOW) is commonly utilised by malicious applications.
 
 # Documentation
 Code contains document comments, especially in RemoteDetector class. 
