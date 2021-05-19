@@ -1,9 +1,13 @@
 # Motivation
 
-**Project aims to:**
-* identify keyloggers and events hijacking malicious applications such as Anubis/TeaBot,
-* identify a "fake bank consultant scenario" when a victim is requested to install a remote control application and then log in to a bank account
+**Project aims to help in:**
+* identifying keyloggers and events hijacking malicious applications such as Anubis/TeaBot,
+* identifying a "fake bank consultant scenario" when a victim is requested to install a remote control application and then log in to a bank account,
+* identifying other suspicious applications abusing Android AccessibilityService mechanisms
 
+The methods implemented in RemoteDetector class should not be considered as a comprehensive list of checks. It's a PoC that provides you a way to collect more pieces of information about potentially suspicious applications and implement propper checks. However, some of the presented checks may be highly effective in your environments.
+
+**Furthermore, you may want to implement your custom checks to outpace bad actors.**
 
 # Description
 The project aims to provide a way to detect when an Android device might be controlled or some events hijacked/keylogged. The application is a PoC that helps in identifying modern bankers such as Anubis/TeaBot, potentially malicious and remote controlling applications abusing Android AccessibilityService.
