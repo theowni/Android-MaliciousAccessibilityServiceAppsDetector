@@ -139,7 +139,6 @@ public class RemoteDetector {
         int count = 0;
         if (packageInfo.requestedPermissions != null) {
             for (String perm : packageInfo.requestedPermissions){
-                Log.d(logTag, perm);
                 for (String suspPerm : suspiciousPermissions) {
                     if (perm.equals(suspPerm)) count++;
                 }
@@ -228,7 +227,7 @@ public class RemoteDetector {
         List<String> serviceIDs = new ArrayList<>();
         for (AccessibilityServiceInfo svc : services)
             serviceIDs.add(svc.getId().split("/")[0]);
-        
+
         return serviceIDs;
     }
 
@@ -465,6 +464,45 @@ public class RemoteDetector {
         }
 
         return  retApps;
+    }
+
+    public Set<String> getAccessibilityServicesPermittedToOverlay(){
+        Set<String> retApps = new HashSet<>();
+        List<String> accessibilityServiceIDsInstalled = getAccessibilityServiceIDsInstalled();
+        PackageManager pm = mContext.getPackageManager();
+
+        for (String svcPackageName : accessibilityServiceIDsInstalled) {
+            PackageInfo svcInstalledPackageInfo = null;
+
+            try {
+                svcInstalledPackageInfo = pm.getPackageInfo(svcPackageName, PackageManager.GET_PERMISSIONS);
+            } catch (PackageManager.NameNotFoundException e) {
+                // pass Exception, packageName not found
+            }
+
+            if ((svcInstalledPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0)
+                continue;
+            if (svcInstalledPackageInfo == null)
+                continue;
+
+            if (svcInstalledPackageInfo.permissions != null)
+                for (PermissionInfo perm : svcInstalledPackageInfo.permissions) {
+                    if (perm.name.equals("android.permission.SYSTEM_ALERT_WINDOW")) {
+                        Log.d("allowed", svcInstalledPackageInfo.packageName);
+                        retApps.add(svcInstalledPackageInfo.packageName);
+                    }
+                }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && svcInstalledPackageInfo.requestedPermissions != null)
+                for (String permName : svcInstalledPackageInfo.requestedPermissions) {
+                    if (permName.equals("android.permission.SYSTEM_ALERT_WINDOW")) {
+                        Log.d("allowed", svcInstalledPackageInfo.packageName);
+                        retApps.add(svcInstalledPackageInfo.packageName);
+                    }
+                }
+        }
+
+        return retApps;
     }
 
     /**

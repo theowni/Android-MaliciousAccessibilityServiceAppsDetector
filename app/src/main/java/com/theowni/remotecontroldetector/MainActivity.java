@@ -41,6 +41,8 @@ public class MainActivity extends BaseSecureActivity {
         Set<String> appsWithCorrelatedInstallTimesWithSuspiciousApps = remoteDetector.getAppsWithCorrelatedInstallTimesWithSuspiciousApps();
         Log.d(logTag, "Lists applications that were installed in last 15 minutes - based on hardcoded checks");
         Set<String> appsInstalledInLastQuarter = remoteDetector.getAvailabilityServicesInstalledInLastQuarter();
+        Log.d(logTag, "Lists AccessibilityServices permitted to overlay");
+        Set<String> accessibilityServicesPermittedToOverlay = remoteDetector.getAccessibilityServicesPermittedToOverlay();
 
         if (Sets.intersection(
                 appsWithSuspiciousASvcsEnabled,
@@ -55,6 +57,14 @@ public class MainActivity extends BaseSecureActivity {
                 appsWithCorrelatedInstallTimesWithSuspiciousApps).size() > 0) {
             Log.d(logTag, "Recently installed and enabled suspicious AccessibilityService");
             ((Switch) findViewById(R.id.switch3)).setChecked(true);
+        }
+
+        if (Sets.intersection(
+                Sets.intersection(remoteDetector.getAccessibilityServiceIDsEnabled(), appsWithSuspiciousASvcsSettings),
+                accessibilityServicesPermittedToOverlay)
+                .size() > 0) {
+            Log.d(logTag, "Suspicious AccessibilityService enabled and can draw over apps");
+            ((Switch) findViewById(R.id.switch31)).setChecked(true);
         }
 
         if (appsWithSuspiciousASvcsEnabled.size() > 0) {

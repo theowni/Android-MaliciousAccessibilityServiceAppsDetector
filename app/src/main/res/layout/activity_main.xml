@@ -53,6 +53,29 @@
          />
 
     <Switch
+        android:id="@+id/switch31"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:checked="false"
+        android:clickable="false"
+        android:textOff="Not detected"
+        android:textOn="Detected"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@id/switch3" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="230dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:text="Suspicious AccessibilityService enabled and can draw over apps"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    />
+
+    <Switch
         android:id="@+id/switch4"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
@@ -62,7 +85,7 @@
         android:textOff="Not detected"
         android:textOn="Detected"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@id/switch3" />
+        app:layout_constraintTop_toBottomOf="@id/switch31" />
 
     <TextView
         android:id="@+id/textView4"
@@ -72,7 +95,7 @@
         android:layout_marginLeft="20dp"
         android:text="Suspicious AccessibilityService enabled"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
     />
 
     <Switch
