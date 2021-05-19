@@ -2,7 +2,7 @@
 
 **Project aims to:**
 * identify keyloggers and events hijacking malicious applications
-* identify a "fake bank consultant scenario" when victim is requested to install remote control application and then log in to bank account
+* identify a "fake bank consultant scenario" when a victim is requested to install a remote control application and then log in to a bank account
 
 
 # Description
@@ -35,11 +35,25 @@ if (Sets.intersection(
         }
 ```
 
+More methods can be found in "RemoteDetector" class.
+
 # Details
-TBD
+
+The RemoteDetector uses information provided by Android API, especially by [AccessiblityManager](https://developer.android.com/reference/android/view/accessibility/AccessibilityManager) and [PackageManager](https://developer.android.com/reference/android/content/pm/PackageManager).
+
+AccessibilityServices currently enabled on a device can be listed via [getEnabledAccessibilityServiceList](https://developer.android.com/reference/android/view/accessibility/AccessibilityManager#getEnabledAccessibilityServiceList(int)).
+
+To obtain capabilities used by AccessibilityServices [getCapabilities](https://developer.android.com/reference/android/accessibilityservice/AccessibilityServiceInfo#getCapabilities()) method is used. For example, to verify if a service can perform gestures, the following code returns true:
+
+```java
+if ((svc.getCapabilities() & CAPABILITY_CAN_PERFORM_GESTURES) != 0)
+    return true;
+```
+
+Specific pieces of information about suspicious applications are obtained from PackageManager class.
 
 # Documentation
 Code contains document comments, especially in RemoteDetector class. 
 
-# Credits
-TBD
+# Credits to
+Android malware analytics publishing their researches
