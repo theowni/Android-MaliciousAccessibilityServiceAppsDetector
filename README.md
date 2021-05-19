@@ -90,4 +90,6 @@ To draw over application the [SYSTEM_ALERT_WINDOW](https://developer.android.com
 Code contains document comments, especially in RemoteDetector class. 
 
 # Credits to
-Android malware analytics publishing their researches.
+All Android malware analytics publishing their researches, especially for:
+* https://labs.f-secure.com/blog/how-are-we-doing-with-androids-overlay-attacks-in-2020/
+* https://www.cleafy.com/documents/teabot
