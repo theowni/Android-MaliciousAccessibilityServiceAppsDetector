@@ -1,7 +1,7 @@
 # Motivation
 
 **Project aims to:**
-* identify keyloggers and events hijacking malicious applications
+* identify keyloggers and events hijacking malicious applications such as Anubis/TeaBot,
 * identify a "fake bank consultant scenario" when a victim is requested to install a remote control application and then log in to a bank account
 
 
@@ -56,4 +56,4 @@ Specific pieces of information about suspicious applications are obtained from P
 Code contains document comments, especially in RemoteDetector class. 
 
 # Credits to
-Android malware analytics publishing their researches
+Android malware analytics publishing their researches.
