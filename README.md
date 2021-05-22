@@ -9,6 +9,16 @@ The methods implemented in RemoteDetector class should not be considered as a co
 
 **Furthermore, you may want to implement your custom checks to outpace bad actors.**
 
+# Demos
+
+## Anubis Detection
+
+https://user-images.githubusercontent.com/10147168/118893109-35e1dd80-b902-11eb-87e9-4c7695a99836.mp4
+
+## Remote Control App Detection
+
+https://user-images.githubusercontent.com/10147168/118893245-67f33f80-b902-11eb-8174-4a53a61329f8.mp4
+
 # Description
 The project aims to provide a way to detect when an Android device might be controlled or some events hijacked/keylogged. The application is a PoC that helps in identifying modern bankers such as Anubis/TeaBot, potentially malicious and remote controlling applications abusing Android AccessibilityService.
 
@@ -21,16 +31,6 @@ RemoteDetector Java class allows to:
 * list applications that uses suspicious ports _(PoC currently works for Android < 10)_
 * list suspicious applications installed in last 15minutes 
 * list suspicious applications that installTime is similar to AccessibilityService package installTime _(if different packages)_
-
-# Demos
-
-## Anubis Detection
-
-https://user-images.githubusercontent.com/10147168/118893109-35e1dd80-b902-11eb-87e9-4c7695a99836.mp4
-
-## Remote Control App Detection
-
-https://user-images.githubusercontent.com/10147168/118893245-67f33f80-b902-11eb-8174-4a53a61329f8.mp4
 
 # Usage
 
