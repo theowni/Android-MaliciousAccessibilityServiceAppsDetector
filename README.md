@@ -1,3 +1,9 @@
+***This project is not actively maintained** and may not work properly with the newest Android APIs. It serves as an idea for developing security checks against malicious AccessibilityServices*.
+
+*Feel free to fork this repository and adjust to your needs. More context about this project is covered in https://devsec-blog.com/2024/03/detecting-banker-malware-installed-on-android-devices/.*
+
+---
+
 # Motivation
 
 **Project aims to help in:**
