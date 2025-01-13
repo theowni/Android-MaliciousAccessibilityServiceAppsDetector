@@ -480,9 +480,9 @@ public class RemoteDetector {
                 // pass Exception, packageName not found
             }
 
-            if ((svcInstalledPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0)
-                continue;
             if (svcInstalledPackageInfo == null)
+                continue;
+            if ((svcInstalledPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0)
                 continue;
 
             if (svcInstalledPackageInfo.permissions != null)
